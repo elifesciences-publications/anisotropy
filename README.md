@@ -15,12 +15,20 @@ scales.
       ~223 Hz, ~133 Hz, ~74 Hz. 
 2. **Step 2**: Merge and QC the SPT data from many different single
 cells
-	1. Open script `MergeQC_SPT_data.m` and click run.
+	1. Open script `MergeQC_SPT_data.m` and click run (~1-2 min).
 	2. Use the script to merge data from multiple cells. Dependent
        function: `RemoveAmbigiousTracks.m`
 	3. Adjust `ClosestDist` to set the threshold in micrometers for
-       when particles are too close and trajectories should be aborted.
-3. 
+       when particles are too close and trajectories should be
+       aborted.
+    4. At the end of this step, the directory `QC_data` should contain
+       a single MAT file for each frame rate,
+       e.g. `U2OS_C32_Halo-hCTCF_74Hz_pooled_QC_CD2.mat`
+3. **Step 3** Classify all trajectories using a Hidden-Markov Model
+	   1. Open script `Batch_vbSPT_classify.m` and click run.
+4. **Step 4**
+5. **Step 5**
+6. **Step 6**
 
 ## Detailed description of each step
 Below we will describe each step in more details. 
@@ -37,7 +45,7 @@ frames (e.g. if two movies with 20,000 frames are merged, frame 1 in
 the second movie becomes frame 20,001). To minimize tracking errors,
 we also use `ClosestDist = 2` (in units of μm) to abort trajectories
 where two particles came closer than 2 μm to each other. This is
-achieved by calling the function `RemoveAmbigiousTracks.m`. 
+achieved by calling the function `RemoveAmbigiousTracks.m`. At the end of this step, the directory `QC_data` should contain a single MAT file for each frame rate, e.g. `U2OS_C32_Halo-hCTCF_74Hz_pooled_QC_CD2.mat`.
 
 
 
