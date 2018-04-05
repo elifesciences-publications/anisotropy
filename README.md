@@ -35,7 +35,7 @@ cells
   4. At the end, HMM-classified trajectories are saved to
      `HMM_first_QC_data` containing two variables: `CellTracks` is a
      cell array with the xy data. `CellTrackViterbiClass` is the
-     HMM-classification, with 1=*BOUND* and 2=*FREE*. 
+     HMM-classification, with `1`=*BOUND* and `2`=*FREE*. 
 4. **Step 4**
 5. **Step 5**
 6. **Step 6**
@@ -91,6 +91,7 @@ a Nx2 matrix with the XY coordinates for each of the N frames.
     relevant vbSPT metadata such as the inferred diffusion constants,
     subpopulation sizes and transition matrix.	
 * `LagTime`, the time between frames in units of seconds.
+	
 `Batch_vbSPT_classify.m` calls two dependent functions: `InferFrameRateFromName.m`, which infers the frame rate from the filename and `EditRunInputFile_for_batch.m` which edits the file `vbSPT_RunInputFileBatch.m` to automatically feed the relevant information to vbSPT. In summary, at the end of this step the trajectories have been classified to allow subsequent analysis to focus exclusively on the free/diffusing population. 
 
 
@@ -101,15 +102,6 @@ This code was tested with Matlab 2014b on a Mac and comes with vbSPT
 v1.1.2. Newer versions of Matlab (2015 and newer) may need to use
 vbSPT v.1.1.4 instead.
 
-## Author
-The code was written by and is maintained by Anders Sejr Hansen:
-
-email: AndersSejrHansen@post.harvard.edu or
-Anders.Sejr.Hansen@berkeley.edu
-
-Twitter: @Anders_S_Hansen
-
-Web: https://anderssejrhansen.wordpress.com
 
 ## License
 This program is released under the GNU General Public License version 3 or upper (GPLv3+).
