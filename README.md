@@ -2,8 +2,16 @@ Anisotropy
 --------------------------
 
 # Overview of code for data processing and spatiotemporal anisotropy calculations
-This repository contains Matlab code processing SPT trajectory data
-and for calculating anisotropy at multiple spatiotemporal scales. 
+This repository contains Matlab code for processing SPT trajectory data
+and for calculating anisotropy at multiple spatiotemporal
+scales.
+
+## Quick tutorial: going through each step
+
+1. Step 1: Obtain SPT data at multiple spatiotemporal scales
+   1. Here we will use the provided example data for U2OS C32
+      Halo-hCTCF, which is provided in the directory "UnProcessedExampleData"
+2.
 
 
 Update 2017-07-26
@@ -25,13 +33,17 @@ given trajectory is used (yes if =1, no if =0).
 Also improved plotting and performance. Compiling histograms is now
 about 30-40% faster. 
 
-# Author
+## Author
 The code was written by and is maintained by Anders Sejr Hansen:
-email: AndersSejrHansen@post.harvard.edu or Anders.Sejr.Hansen@berkeley.edu
+
+email: AndersSejrHansen@post.harvard.edu or
+Anders.Sejr.Hansen@berkeley.edu
+
 Twitter: @Anders_S_Hansen
+
 Web: https://anderssejrhansen.wordpress.com
 
-# License
+## License
 This program is released under the GNU General Public License version 3 or upper (GPLv3+).
 
 
@@ -49,7 +61,7 @@ This program is released under the GNU General Public License version 3 or upper
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-# Acknowledgements
+## Acknowledgements
 
 vbSPT
 
