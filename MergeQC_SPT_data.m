@@ -1,6 +1,6 @@
 %   MergeQC_SPT_data.m
 %   written by Anders Sejr Hansen (AndersSejrHansen@post.harvard.edu;
-%   @Anders_S_Hansen; https://anderssejrhansen.wordpress.com/)
+%   @Anders_S_Hansen; https://anderssejrhansen.wordpress.com)
 %   License: GNU GPL v3
 clear; clc; close all;
 % add path for dependent functions:
@@ -73,15 +73,15 @@ for DataSet = 1:3
         input_struct(1).workspaces = {'20170522_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_12-405_13msCam_cell01_Tracked.mat',  '20170522_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_12-405_13msCam_cell02_Tracked.mat', '20170522_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_7-405_13msCam_cell03_Tracked.mat', '20170522_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_7-405_13msCam_cell04_Tracked.mat', '20170522_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_14-405_13msCam_cell05_Tracked.mat', '20170522_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_13-405_13msCam_cell06_Tracked.mat', '20170522_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_7-405_13msCam_cell07_Tracked.mat', '20170522_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_13-405_13msCam_cell08_Tracked.mat'};
         input_struct(1).Include = [0,1,1,1,1,0,1,0];
 
-        input_struct(2).path = ['.', filesep, 'UnProcessedExampleData', filesep, '74Hz', filesep, '20170522_U2OS_C32_Halo-hCTCF_PA-JF549', filesep];
+        input_struct(2).path = ['.', filesep, 'UnProcessedExampleData', filesep, '74Hz', filesep, '20170525_U2OS_C32_Halo-hCTCF_PA-JF549', filesep];
         input_struct(2).workspaces = {'20170525_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_5-405_13msCam_cell01_Tracked.mat',  '20170525_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_8-405_13msCam_cell02_Tracked.mat', '20170525_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_5-405_13msCam_cell03_Tracked.mat', '20170525_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_5-405_13msCam_cell04_Tracked.mat', '20170525_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_11-405_13msCam_cell05_Tracked.mat', '20170525_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_5-405_13msCam_cell06_Tracked.mat', '20170525_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_6-405_13msCam_cell07_Tracked.mat', '20170525_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_12-405_13msCam_cell08_Tracked.mat'};
         input_struct(2).Include = [1,1,1,1,1,1,1,1];
 
-        input_struct(3).path = ['.', filesep, 'UnProcessedExampleData', filesep, '74Hz', filesep, '20170522_U2OS_C32_Halo-hCTCF_PA-JF549', filesep];
+        input_struct(3).path = ['.', filesep, 'UnProcessedExampleData', filesep, '74Hz', filesep, '20170526_U2OS_C32_Halo-hCTCF_PA-JF549', filesep];
         input_struct(3).workspaces = {'20170526_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_6-405_13msCam_cell01_Tracked.mat',  '20170526_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_6-405_13msCam_cell02_Tracked.mat', '20170526_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_5-405_13msCam_cell03_Tracked.mat', '20170526_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_6-405_13msCam_cell04_Tracked.mat', '20170526_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_9-405_13msCam_cell05_Tracked.mat', '20170526_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_5-405_13msCam_cell06_Tracked.mat', '20170526_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_12-405_13msCam_cell07_Tracked.mat', '20170526_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_12-405_13msCam_cell08_Tracked.mat'};
         input_struct(3).Include = [1,1,1,1,1,1,1,1];
 
-        input_struct(4).path = ['.', filesep, 'UnProcessedExampleData', filesep, '74Hz', filesep, '20170522_U2OS_C32_Halo-hCTCF_PA-JF549', filesep];
+        input_struct(4).path = ['.', filesep, 'UnProcessedExampleData', filesep, '74Hz', filesep, '20170527_U2OS_C32_Halo-hCTCF_PA-JF549', filesep];
         input_struct(4).workspaces = {'20170527_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_6-405_13msCam_cell01_Tracked.mat',  '20170527_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_11-405_13msCam_cell02_Tracked.mat', '20170527_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_5-405_13msCam_cell03_Tracked.mat', '20170527_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_5-405_13msCam_cell04_Tracked.mat', '20170527_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_5-405_13msCam_cell05_Tracked.mat', '20170527_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_5-405_13msCam_cell06_Tracked.mat', '20170527_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_7-405_13msCam_cell07_Tracked.mat', '20170527_U2OS_C32_Halo-hCTCF_50nM_PA-JF549_1ms-AOTF100-1100mW-549nm_7-405_13msCam_cell08_Tracked.mat'};
         input_struct(4).Include = [0,1,1,1,1,1,1,1];
         

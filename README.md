@@ -1,15 +1,9 @@
-Spot-On Matlab
+Anisotropy
 --------------------------
 
-# Downloading and Running Spot-On Matlab
-This repository contains the Matlab version of Spot-On. The Matlab
-version is distributed with the GNU GPL v3 license. Please
-download the entire repository as a zipped-file and then open up the
-introductory guide "A step-by-step guide to using Spot-On MatLab
-version 1.docx" and follow the instructions in there.
-Alternatively, if you download the repository and open up the main
-script "SpotOn_main.m" and click run, the whole code should run and
-produce a series of plots based on the example data.
+# Overview of code for data processing and spatiotemporal anisotropy calculations
+This repository contains Matlab code processing SPT trajectory data
+and for calculating anisotropy at multiple spatiotemporal scales. 
 
 
 Update 2017-07-26
@@ -31,16 +25,34 @@ given trajectory is used (yes if =1, no if =0).
 Also improved plotting and performance. Compiling histograms is now
 about 30-40% faster. 
 
-# How to cite
+# Author
+The code was written by and is maintained by Anders Sejr Hansen:
+email: AndersSejrHansen@post.harvard.edu or Anders.Sejr.Hansen@berkeley.edu
+Twitter: @Anders_S_Hansen
+Web: https://anderssejrhansen.wordpress.com
 
-Please acknowledge Spot-On in your publications:
+# License
+This program is released under the GNU General Public License version 3 or upper (GPLv3+).
 
-    Robust model-based analysis of single-particle tracking experiments with Spot-On
 
-    Anders S Hansen*, Maxime Woringer*, Jonathan B Grimm, Luke D Lavis, Robert Tjian, Xavier Darzacq
-    eLife, 2018, 7, e33125. doi: 10.7554/eLife.33125
-	
-    *These authors contributed equally and are alphabetically listed.
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+# Acknowledgements
+
+vbSPT
+
 
 
 
