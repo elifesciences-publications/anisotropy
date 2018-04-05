@@ -2,6 +2,8 @@
 %   written by Anders Sejr Hansen (AndersSejrHansen@post.harvard.edu;
 %   @Anders_S_Hansen; https://anderssejrhansen.wordpress.com)
 %   License: GNU GPL v3
+%   Dependent functions:
+%       - RemoveAmbigiousTracks.m
 clear; clc; close all;
 % add path for dependent functions:
 addpath('Functions');

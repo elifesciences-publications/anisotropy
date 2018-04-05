@@ -17,29 +17,30 @@ scales.
 cells
 	1. Open script `MergeQC_SPT_data.m` and click run.
 	2. Use the script to merge data from multiple cells. Dependent
-       function: 
+       function: `RemoveAmbigiousTracks.m`
 	3. Adjust `ClosestDist` to set the threshold in micrometers for
        when particles are too close and trajectories should be aborted.
-3.
+3. 
 
-Update 2017-07-26
+## Detailed description of each step
+Below we will describe each step in more details. 
 
-Fixed plotting issue on small screen. Enabled weighting: if
-UseWeights=1, Spot-On will now weigh each histogram at each dT
-according to the relative amount of data in the least-squares
-fitting.
+#### Step 1 - Obtain SPT data at multiple temporal scales
+Here we will use the provided example data for U2OS C32 Halo-hCTCF, which is provided in the directory `UnProcessedExampleData` and contains data at 3 frame rates: ~223 Hz, ~133 Hz, ~74 Hz. 
+
+#### Step 2 - Merge and QC the SPT data from many different single cells
+When performing tracking and localization, each single cell results in
+a single file. Thus, to keep things manageable, we use
+`MergeQC_SPT_data.m` to merge data from all these single cells (~20-30
+cells) into a single file for a given frame rate, by concatenating the
+frames (e.g. if two movies with 20,000 frames are merged, frame 1 in
+the second movie becomes frame 20,001). To minimize tracking errors,
+we also use `ClosestDist = 2` (in units of μm) to abort trajectories
+where two particles came closer than 2 μm to each other. This is
+achieved by calling the function `RemoveAmbigiousTracks.m`. 
 
 
-Update 2018-02-02 version 1.04
 
-The variable controlling whether all displacements from all
-trajectories will be used has been renamed. "UseAllTraj" is now called
-"UseEntireTraj" based on user feedback that the original name was
-confusing. We would like to clarify that all trajectories are always
-used, but that UseEntireTraj controls whether all displacements from a
-given trajectory is used (yes if =1, no if =0).
-Also improved plotting and performance. Compiling histograms is now
-about 30-40% faster. 
 
 ## Author
 The code was written by and is maintained by Anders Sejr Hansen:
