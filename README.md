@@ -25,7 +25,17 @@ cells
        a single MAT file for each frame rate,
        e.g. `U2OS_C32_Halo-hCTCF_74Hz_pooled_QC_CD2.mat`
 3. **Step 3** Classify all trajectories using a Hidden-Markov Model
-	   1. Open script `Batch_vbSPT_classify.m` and click run.
+   1. Open script `Batch_vbSPT_classify.m` and click run.
+   2. This script uses the HMM vbSPT to classify trajectories into
+      *BOUND* and *FREE* using a 2-state model. Please see
+	  acknowlegdements for a full citation of Persson et al. for vbSPT.
+  3. Since vbSPT cannot handle gaps, `Batch_vbSPT_classify.m` goes
+         through trajectories with gaps splits them into
+         subtrajectories. vbSPT runs in parallel by default. 
+  4. At the end, HMM-classified trajectories are saved to
+     `HMM_first_QC_data` containing two variables: `CellTracks` is a
+     cell array with the xy data. `CellTrackViterbiClass` is the
+     HMM-classification, with 1=*BOUND* and 2=*FREE*. 
 4. **Step 4**
 5. **Step 5**
 6. **Step 6**
