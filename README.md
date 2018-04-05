@@ -24,10 +24,10 @@ cells
     4. At the end of this step, the directory `QC_data` should contain
        a single MAT file for each frame rate,
        e.g. `U2OS_C32_Halo-hCTCF_74Hz_pooled_QC_CD2.mat`
-3. **Step 3** Classify all trajectories using a Hidden-Markov Model
+3. **Step 3** Classify all trajectories using a Hidden-Markov Model (HMM)
    1. Open script `Batch_vbSPT_classify.m` and click run.
    2. This script uses the HMM vbSPT to classify trajectories into
-      *BOUND* and *FREE* using a 2-state model. Please see
+      *BOUND* and *FREE* segments using a 2-state model. Please see
 	  acknowlegdements for a full citation of Persson et al. for vbSPT.
   3. Since vbSPT cannot handle gaps, `Batch_vbSPT_classify.m` goes
          through trajectories with gaps splits them into
@@ -57,8 +57,21 @@ we also use `ClosestDist = 2` (in units of μm) to abort trajectories
 where two particles came closer than 2 μm to each other. This is
 achieved by calling the function `RemoveAmbigiousTracks.m`. At the end of this step, the directory `QC_data` should contain a single MAT file for each frame rate, e.g. `U2OS_C32_Halo-hCTCF_74Hz_pooled_QC_CD2.mat`.
 
+#### Step 3 - Classify all trajectories using a Hidden-Markov Model (HMM)
+We use `Batch_vbSPT_classify.m` to classify trajectory segments into *BOUND* and *FREE* segments. `Batch_vbSPT_classify.m` first removes gaps from all the trajectories and then calls vbSPT. We implemented a 2-state Hidden Markov Model (HMM) through vbSPT, which uses a Bayesian approach to infer the most likely state for each displacement in a trajectory (“bound” or “free”) based on displacement lengths and trajectory history. This is important, because the apparent movement of bound molecules is dominated by localization errors. Thus, we want to exclude bound/immobile molecules from the analysis since we are interested in understanding the nuclear search mechanism, which only applies to diffusing/free molecules and also because bound/immobile molecules will artefactual appear anisotropic due to localization errors around a relatively fixed position. Thus, by using a 2-state HMM we can filter out the bound population and restrict our subsequent analysis to the free population (the number of states is controlled by the variable `maxHidden`. `Batch_vbSPT_classify.m` will automatically run on all SPT datasets in the directory `input_path`, reformat data to remove gaps and save the reformatted data to `path_reformatted` and finally save the classified data to `path_classified`. The final classified SPT data contains 4 variables: 
+•	`CellTracks`, a cell array where each element is a trajectory and is a Nx2 matrix with the XY coordinates for each of the N frames. 
+•	`CellTrackViterbiClass` is a cell array where each element is a N-1 column vector corresponding to the relevant trajectory in `CellTracks`. In other words, `CellTrackViterbiClass` classifies each displacement and thus is one length shorter than the number of localizations in `CellTracks`. `1` corresponds to *BOUND* and `2` corresponds to *FREE*. E.g. if a trajectory had 5 localizations, `CellTrackViterbiClass` will have length 4. 
+•	`vbSPT_metadata`, a structure array object containing the most relevant vbSPT metadata such as the inferred diffusion constants, subpopulation sizes and transition matrix.
+•	`LagTime`, the time between frames in units of seconds.
+`Batch_vbSPT_classify.m` calls two dependent functions: `InferFrameRateFromName.m`, which infers the frame rate from the filename and `EditRunInputFile_for_batch.m` which edits the file `vbSPT_RunInputFileBatch.m` to automatically feed the relevant information to vbSPT. In summary, at the end of this step the trajectories have been classified to allow subsequent analysis to focus exclusively on the free/diffusing population. 
 
 
+
+
+#### Issues
+This code was tested with Matlab 2014b on a Mac and comes with vbSPT
+v1.1.2. Newer versions of Matlab (2015 and newer) may need to use
+vbSPT v.1.1.4 instead.
 
 ## Author
 The code was written by and is maintained by Anders Sejr Hansen:
@@ -90,7 +103,16 @@ This program is released under the GNU General Public License version 3 or upper
 
 ## Acknowledgements
 
-vbSPT
+This project makes heavy use of vbSPT for HMM-classification of
+trajectories into *BOUND* and *FREE* segments. Please see the full
+vbSPT paper below for details (see also SourceForge for the latest
+version https://sourceforge.net/projects/vbspt/ ):
+
+    Extracting intracellular reaction rates from single molecule tracking data
+    Person F,Lindén M, Unoson C, Elf J
+    Nature Methods 10, 265–269 (2013). doi:10.1038/nmeth.2367
+
+
 
 
 
