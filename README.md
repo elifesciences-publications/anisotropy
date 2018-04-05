@@ -8,11 +8,19 @@ scales.
 
 ## Quick tutorial: going through each step
 
-1. Step 1: Obtain SPT data at multiple spatiotemporal scales
+1. **Step 1**: Obtain SPT data at multiple temporal scales
    1. Here we will use the provided example data for U2OS C32
-      Halo-hCTCF, which is provided in the directory "UnProcessedExampleData"
-2.
-
+      Halo-hCTCF, which is provided in the directory
+      "UnProcessedExampleData" and contains data at 3 frame rates:
+      ~223 Hz, ~133 Hz, ~74 Hz. 
+2. **Step 2**: Merge and QC the SPT data from many different single
+cells
+	1. Open script 'MergeQC_SPT_data.m' and click run.
+	2. Use the script to merge data from multiple cells. Dependent
+       function: 
+	3. Adjust 'ClosestDist' to set the threshold in micrometers for
+       when particles are too close and trajectories should be aborted.
+3.
 
 Update 2017-07-26
 
