@@ -129,8 +129,9 @@ important  potential ambiguity here. To illustrate, suppose we want to take ever
 
 
 
-![alt text](QC_Plots/U2OS_C32_Halo-hCTCF___HMMfirst_Plot1.pdf)
+![Plot1](https://gitlab.com/anders.sejr.hansen/anisotropy/blob/master/QC_Plots/U2OS_C32_Halo-hCTCF___HMMfirst_Plot1.pdf)
 
+![Plot2](https://gitlab.com/anders.sejr.hansen/anisotropy/blob/master/QC_Plots/U2OS_C32_Halo-hCTCF___HMMfirst_Plot2.pdf)
 
 #### Issues
 This code was tested with Matlab 2014b on a Mac and comes with vbSPT
