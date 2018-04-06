@@ -24,7 +24,6 @@ clear; clc;
 
 % add path for dependent functions:
 addpath('Functions');
-out_save_path = ['.', filesep, 'MergedDataPlots', filesep];
 data_path = ['.', filesep, 'HMM_first_QC_data', filesep];
 DataSet = 1;
 

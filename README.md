@@ -125,6 +125,13 @@ dependent function `TemporallyReSampleCellTracks.m` and we note an
 important  potential ambiguity here. To illustrate, suppose we want to take every 3rd frame of a trajectory (i.e. frames 1, 4, 7, …). Since the SPT data has already been HMM-classified, a trajectory of length N will have N-1 displacements classified as either bound or free. We would like to carry over this classification to the temporally subsampled trajectory. While most trajectories are either entirely free (`2`) or bound (`1`), some trajectories show transitions. In this example, say the HMM-classification is [1,2,2,2,2,1] for frames 1-7. In this case, the subsampled displacement from frame 1-to-4 will have HMM-classification [1,2,2], but we have to label it as either “1” or “2’ in the sub-sampled data. In these cases, we took the most conservative approach. Since our primary goal is to filter out the bound population, we labelled any temporally subsampled displacement as bound as long as any one of the intermediate displacements were classified as bound, even if the majority were free. This is implemented in the function `TemporallyReSampleCellTracks.m`. Finally, at the end of this procedure, all the temporally subsampled and HMM-classified SPT datasets are saved to the directory `HMM_first_QC_data`. 
 
 
+#### Step 5 - Perform full SpatioTemporal analysis of anisotropy
+
+
+
+![alt text](QC_Plots/U2OS_C32_Halo-hCTCF___HMMfirst_Plot1.pdf)
+
+
 #### Issues
 This code was tested with Matlab 2014b on a Mac and comes with vbSPT
 v1.1.2. Newer versions of Matlab (2015 and newer) may need to use
