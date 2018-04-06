@@ -36,7 +36,7 @@ cells
      `HMM_first_QC_data` containing two variables: `CellTracks` is a
      cell array with the xy data. `CellTrackViterbiClass` is the
      HMM-classification, with `1`=*BOUND* and `2`=*FREE*. 
- 4. **Step 4** Temporally subsample the HMM-classified SPT data
+4. **Step 4** Temporally subsample the HMM-classified SPT data
 	1. Open script `CompileTemporalSubSamplesOfHMM.m` and click run.
 	2. This script subsamples the data to generate trajectories at
     longer lag times (e.g. 100 Hz --> 50 Hz).
