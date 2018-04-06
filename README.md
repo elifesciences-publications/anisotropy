@@ -41,8 +41,19 @@ cells
 	2. This script subsamples the data to generate trajectories at
     longer lag times (e.g. 100 Hz --> 50 Hz).
 	3. It also carries over the HMM-classification from the faster
-       frame rates. `Dependent function: TemporallyReSampleCellTracks.m`
-5. **Step 5**
+       frame rates. Dependent function: `TemporallyReSampleCellTracks.m`
+5. **Step 5** Perform full SpatioTemporal analysis of anisotropy
+   1.	Open script `Process_SpatioTemporal_AngleAnalysis_v2.m` and
+   click run.
+   2. This will do a full analysis of anistropy at multiple
+      spatiotemporal scales. The relevant parameters for the analysis
+      should be specificied in
+      `Process_SpatioTemporal_AngleAnalysis_v2.m`.
+   3. The bulk of the analysis is performed in
+      `angleFWHM_Amp_HMM_analyzer_v5.m`. Additional dependent functions
+      `AngleMatrix_analyzer.m` and `ComputeAmpFWHM.m`.
+    4. At the end of the run, the analysis results are saved as MAT
+      file: `U2OS_C32_SpatioTemporalAnalysis.mat` 
 6. **Step 6**
 
 ## Detailed description of each step
@@ -99,7 +110,7 @@ a Nx2 matrix with the XY coordinates for each of the N frames.
 	
 `Batch_vbSPT_classify.m` calls two dependent functions: `InferFrameRateFromName.m`, which infers the frame rate from the filename and `EditRunInputFile_for_batch.m` which edits the file `vbSPT_RunInputFileBatch.m` to automatically feed the relevant information to vbSPT. In summary, at the end of this step the trajectories have been classified to allow subsequent analysis to focus exclusively on the free/diffusing population. 
 
-#### Step 3 - Temporally subsample the HMM-classified SPT data
+#### Step 4 - Temporally subsample the HMM-classified SPT data
 Next, we use `CompileTemporalSubSamplesOfHMM.m` to temporally
 subsample the existing SPT data and generate trajectories with longer
 lag times. E.g. by subsampling every 10th frame (frames 1, 11, 21, …)
