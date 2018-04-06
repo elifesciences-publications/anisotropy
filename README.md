@@ -36,7 +36,12 @@ cells
      `HMM_first_QC_data` containing two variables: `CellTracks` is a
      cell array with the xy data. `CellTrackViterbiClass` is the
      HMM-classification, with `1`=*BOUND* and `2`=*FREE*. 
-4. **Step 4**
+ 4. **Step 4** Temporally subsample the HMM-classified SPT data
+	1. Open script `CompileTemporalSubSamplesOfHMM.m` and click run.
+	2. This script subsamples the data to generate trajectories at
+    longer lag times (e.g. 100 Hz --> 50 Hz).
+	3. It also carries over the HMM-classification from the faster
+       frame rates. `Dependent function: TemporallyReSampleCellTracks.m`
 5. **Step 5**
 6. **Step 6**
 
@@ -80,7 +85,7 @@ finally save the classified data to `path_classified`. The final
 classified SPT data contains 4 variables:
 * `CellTracks`, a cell array where each element is a trajectory and is
 a Nx2 matrix with the XY coordinates for each of the N frames.
-* `CellTrackViterbiClass` is a cell array where each element is a N-1
+* `CellTrackViterbiClass`, a cell array where each element is a N-1
   column vector corresponding to the relevant trajectory in
   `CellTracks`. In other words, `CellTrackViterbiClass` classifies
   each displacement and thus is one length shorter than the number of
@@ -94,7 +99,19 @@ a Nx2 matrix with the XY coordinates for each of the N frames.
 	
 `Batch_vbSPT_classify.m` calls two dependent functions: `InferFrameRateFromName.m`, which infers the frame rate from the filename and `EditRunInputFile_for_batch.m` which edits the file `vbSPT_RunInputFileBatch.m` to automatically feed the relevant information to vbSPT. In summary, at the end of this step the trajectories have been classified to allow subsequent analysis to focus exclusively on the free/diffusing population. 
 
-
+#### Step 3 - Temporally subsample the HMM-classified SPT data
+Next, we use `CompileTemporalSubSamplesOfHMM.m` to temporally
+subsample the existing SPT data and generate trajectories with longer
+lag times. E.g. by subsampling every 10th frame (frames 1, 11, 21, …)
+of the 223 Hz data and every 6th frame (frames 1, 7, 13, …) of the 133
+Hz data, we can generate new SPT trajectories at 22.2 Hz. Full details
+on how the 223 Hz, 133 Hz and 74 Hz SPT data was temporally subsampled
+is given in the structure array, `TempSubSampleStruc` in lines
+40-117. We use this approach to generate SPT data at the following
+frame rates: 44.4 Hz, 34.2 Hz, 26 Hz, 22.2 Hz, 18.8 Hz, 16.5 Hz, 14.8
+Hz, 12.2 Hz, 10.6 Hz, 9.2 Hz. The subsampling is performed in the
+dependent function `TemporallyReSampleCellTracks.m` and we note an
+important  potential ambiguity here. To illustrate, suppose we want to take every 3rd frame of a trajectory (i.e. frames 1, 4, 7, …). Since the SPT data has already been HMM-classified, a trajectory of length N will have N-1 displacements classified as either bound or free. We would like to carry over this classification to the temporally subsampled trajectory. While most trajectories are either entirely free (`2`) or bound (`1`), some trajectories show transitions. In this example, say the HMM-classification is [1,2,2,2,2,1] for frames 1-7. In this case, the subsampled displacement from frame 1-to-4 will have HMM-classification [1,2,2], but we have to label it as either “1” or “2’ in the sub-sampled data. In these cases, we took the most conservative approach. Since our primary goal is to filter out the bound population, we labelled any temporally subsampled displacement as bound as long as any one of the intermediate displacements were classified as bound, even if the majority were free. This is implemented in the function `TemporallyReSampleCellTracks.m`. Finally, at the end of this procedure, all the temporally subsampled and HMM-classified SPT datasets are saved to the directory `HMM_first_QC_data`. 
 
 
 #### Issues
