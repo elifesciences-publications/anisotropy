@@ -1,5 +1,8 @@
 function [ currAmplitude, FWHM_degree ] = ComputeAmpFWHM( normPDF, OffSet_thres, rads )
 %COMPUTEAMPFWHM Computes Amp and FWHM from Norm PDF of angles
+%   written by Anders Sejr Hansen (AndersSejrHansen@post.harvard.edu;
+%   @Anders_S_Hansen; https://anderssejrhansen.wordpress.com)
+%   License: GNU GPL v3
 
 % find the range in rads for the offset:
 [~,idx] = min(abs(rads-OffSet_thres));
@@ -21,7 +24,7 @@ Half_fine_rads = fine_rads(1:round(length(interp1PDF)/2));
 [~, FWHM_idx] = min(abs(Half_interp1PDF-HalfMax));
 %FWHM_val = Half_interp1PDF(FWHM_idx);
 FWHM_rad = Half_fine_rads(FWHM_idx);
-FWHM_degree = radtodeg(pi - FWHM_rad);
+FWHM_degree = 2*radtodeg(pi - FWHM_rad);
 
 end
 

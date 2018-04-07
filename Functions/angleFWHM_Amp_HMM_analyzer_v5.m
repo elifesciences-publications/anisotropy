@@ -1,5 +1,8 @@
 function [ output_struct ] = angleFWHM_Amp_HMM_analyzer_v5(input_struct )
 %ANGLEFWHM_AMP_HMM_ANALYZER returns angle Amplitude and FWHM
+%   written by Anders Sejr Hansen (AndersSejrHansen@post.harvard.edu;
+%   @Anders_S_Hansen; https://anderssejrhansen.wordpress.com)
+%   License: GNU GPL v3
 %   This function takes the data and returns the angle Amplitude and FWHM
 %   as well does subsampling on the data
 
