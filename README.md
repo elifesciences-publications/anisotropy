@@ -197,6 +197,8 @@ Errorbars were estimated using re-sampling and is controlled by the variables `J
 We noticed that at very long displacements, we would occasionally see very strange trajectories such as a particle shifting back and forth between 2 points separated by a large distance (~800 nm). These are almost certainly a tracking artifact, perhaps from 2 bound molecules blinking out-of-frequency. To remove this and avoid these biasing the analysis especially at long displacements, we removed trajectories where more than half of the angles were highly anisotropic using the variables `MaxNumAngles` and `MaxAsymAnglesFrac`. 
 Finally, all of the anisotropy metrics are saved to the structured array `FinalResults` and saved. With the example data provided on GitLab, the workspace saved is `U2OS_C32_SpatioTemporalAnalysis.mat`.
 
+#### Step 6 - Plot the results
+
 
 ![Plot1](https://gitlab.com/anders.sejr.hansen/anisotropy/blob/master/QC_Plots/U2OS_C32_Halo-hCTCF___HMMfirst_Plot1.pdf)
 
