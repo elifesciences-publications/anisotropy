@@ -126,7 +126,35 @@ important  potential ambiguity here. To illustrate, suppose we want to take ever
 
 
 #### Step 5 - Perform full SpatioTemporal analysis of anisotropy
-
+We wrote `Process_SpatioTemporal_AngleAnalysis_v2.m` to perform all
+the analysis of the HMM-classified trajectory data at multiple spatial
+and temporal scales. The bulk of the analysis is performed in the
+dependent function `angleFWHM_Amp_HMM_analyzer_v5.m` and the code also
+calls `AngleMatrix_analyzer.m` and `ComputeAmpFWHM.m`. The analysis is
+somewhat complicated and for full details, we refer the reader to the
+underlying function `angleFWHM_Amp_HMM_analyzer_v5.m`. But briefly, we
+describe the analysis, input parameters and output results here. For a
+given trajectory, as long as it consists of at least 3 localizations
+and thus 2 displacements, it is possible to calculate an angle between
+adjacent displacements. If we define the 3 localizations making up the
+angle as p1, p2 and p3, we can define 2 column vectors and calculate
+the angle between them as follows (using Matlab syntax):
+```matlab
+v1 = (p2-p1)';
+v2 = (p3-p2)';
+angle(1,1) = abs(atan2(det([v1,v2]),dot(v1,v2)));
+angle(1,2) =  2*pi-angle(1,1);
+```
+Here, the second element in the angle is due to the factor that whether a 150 degree angle is classified as 150 or 210 degrees is arbitrary. Note though that the above calculation is in units of radians. We then loop over all the trajectories. However, we want to be careful to filter out the bound population and we therefore apply two criteria. First, the displacements must be HMM-classified as “free” and, second, both displacements must be at least of length “MinMinJumpThres”. Only if both criteria are satisfied, do we count the angle.  These criteria are used for the bulk analysis of the angles (subplots 1-6 in the plotting step). Afterwards, the analysis quantifies 4 different anisotropy metrics:
+•	AC: anisotropy coefficient which is define as: AC = log2(P(a[150-210])/ P(a[330-30])), and this metric was introduced previously by Izeddin et al.7 Thus, the AC quantifies how much more likely a molecule is to go in the backwards after having going forwards. 
+•	Amp: how the amplitude is calculated in illustrated in Figure X and detailed in the function “ComputeAmpFWHM.m”. Briefly, we build a histogram of the probability as a function of the binned angle. We then use fine-scale interpolation to overcome the binning. From this we fit the background density and then calculate the “excess” anisotropy. Since the histogram sums to 1, the amplitude takes values between 0 and 1. This provides a related but somewhat orthogonal metric or anisotropy. 
+•	f(18030/030) or f(180/0) for short: is identical to the AC, but does not use a logarithm. Essentially, f(180/0) quantifies how many times more likely a particle is to go backwards relative to continuing forwards. For example, if f(180/0)=1.6, the particle is 1.6-fold more likely to return in the backwards direction than to continue forwards. 
+•	FWHM (full width at half-maximum): quantifies the width of the anisotropy histogram and is defined as the full width of the histogram peak centered around 180 at the half-maximal value (i.e. when the probability is half-way in between the peak of the of the angle histogram and the background probability).  
+This analysis quantifies the “bulk” anisotropy. 
+To analyze how the anisotropy changes with space and time, we do binning. For spatial analysis, i.e. how the anisotropy metrics depend on the length of the two displacements making up the angle, we control the range of translocations in the variable “MovingThreshold”, which we allow to run from 100 nm to 950 nm in bins of 50 nm. Thus, in this case we additionally consider displacements that are HMM-classified as free and also which are at least 100 nm long (set by the variable “GlotbalMinJumpThres”). Since there are two displacements making up the angle, one can either quantify their mean displacement, their minimal displacement (univariate analysis) or the length of both displacements (bivariate analysis), and we took all three approaches here. For spatial analysis, we averaged over all 13 time-scales (from 223 Hz to 9.2 Hz) and calculated the anisotropy metrics. For example, for f(180/0) as a function of mean displacement, we populated the [100 nm ; 150 nm] bin by taking all angles from all 13 frame rates where the mean of the two displacements making up the angle is between 100 and 150 nm and then calculated f(180/0) using all of these angles. And likewise for the other metrics. For analysis of anisotropy as a function of time, we use all the angles making up a single frame rate satisfying the both of the two criteria listed above: HMM-classified as “free” both displacements at length “MinMinJumpThres” (200 nm).
+Errorbars were estimated using re-sampling and is controlled by the variables “JackKnife_fraction” and “JackKnife_iterations”. Specifically, we resampled 50% of the angles with replacement 50 times and calculated the anisotropy metrics for each iteration. The error bars reported here show the standard deviation between these 50 iterations. 
+We noticed that at very long displacements, we would occasionally see very strange trajectories such as a particle shifting back and forth between 2 points separated by a large distance (~800 nm). These are almost certainly a tracking artifact, perhaps from 2 bound molecules blinking out-of-frequency. To remove this and avoid these biasing the analysis especially at long displacements, we removed trajectories where more than half of the angles were highly anisotropic using the variables “MaxNumAngles” and “MaxAsymAnglesFrac”.  
+Finally, all of the anisotropy metrics are saved to the structured array “FinalResults” and saved. With the example data provided on GitLab, the workspace saved is “U2OS_C32_SpatioTemporalAnalysis.mat”.
 
 
 ![Plot1](https://gitlab.com/anders.sejr.hansen/anisotropy/blob/master/QC_Plots/U2OS_C32_Halo-hCTCF___HMMfirst_Plot1.pdf)
