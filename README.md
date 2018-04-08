@@ -154,7 +154,9 @@ two criteria. First, the displacements must be HMM-classified as
 *FREE* and, second, both displacements must be at least of length
 `MinMinJumpThres`. Only if both criteria are satisfied, do we count
 the angle.  These criteria are used for the bulk analysis of the
-angles (subplots 1-6 in the plotting step (Step 6)). Afterwards, the analysis quantifies 4 different anisotropy metrics:
+angles (subplots 1-6 in the plotting step (Step 6)). Afterwards, the
+analysis quantifies 4 different anisotropy metrics:
+
 * AC: anisotropy coefficient which is define as: AC =
   log2(P(a[150-210])/ P(a[330-30])), and this metric was introduced
   previously by Izeddin et al.7 Thus, the AC quantifies how much more
@@ -169,6 +171,7 @@ angles (subplots 1-6 in the plotting step (Step 6)). Afterwards, the analysis qu
 	anisotropy. Since the histogram sums to 1, the amplitude takes
 	values between 0 and 1. This provides a related but somewhat
 	orthogonal metric or anisotropy.
+	
 *f(18030/030) or f(180/0) for short: is identical to the AC, but does
 	not use a logarithm. Essentially, f(180/0) quantifies how many
 	times more likely a particle is to go backwards relative to
