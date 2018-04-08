@@ -54,7 +54,14 @@ cells
       `AngleMatrix_analyzer.m` and `ComputeAmpFWHM.m`.
     4. At the end of the run, the analysis results are saved as MAT
       file: `U2OS_C32_SpatioTemporalAnalysis.mat` 
-6. **Step 6**
+6. **Step 6** Plot the results
+	  1. Open the script `PLOT_SpatioTemporalAnalysisResults_v4.m` and
+      click run.
+	  2. Adjust which datasets to analyze and where to save the
+         plots. 2 PDFs with 27 total subplots will be save per
+         sample.
+	  3. Although the code is ~600 lines, it only does plotting of
+         data already processed in Step 5. 
 
 ## Detailed description of each step
 Below we will describe each step in more details. 
@@ -172,7 +179,7 @@ analysis quantifies 4 different anisotropy metrics:
 	values between 0 and 1. This provides a related but somewhat
 	orthogonal metric or anisotropy.
 	
-* f(18030/030) or `f(180/0)` for short: is identical to the AC, but does
+* f(180+/-30/0+/-30) or `f(180/0)` for short: is identical to the AC, but does
 	not use a logarithm. Essentially, f(180/0) quantifies how many
 	times more likely a particle is to go backwards relative to
 	continuing forwards. For example, if f(180/0)=1.6, the particle
