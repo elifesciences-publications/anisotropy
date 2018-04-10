@@ -201,13 +201,46 @@ Finally, all of the anisotropy metrics are saved to the structured array `FinalR
 Finally, we used `PLOT_SpatioTemporalAnalysisResults_v4.m` to plot and
 visualize the results for each individual data set and similar code to
 overlay results from multiple different samples. The code will
-generate 27 sub-plots per cell line / condition and these are save as
+generate 24 subplots per cell line / condition and these are save as
 2 PDF files in the directory `QC_Plots`. Please see these two plots:
 ![Plot1](https://gitlab.com/anders.sejr.hansen/anisotropy/blob/master/QC_Plots/U2OS_C32_Halo-hCTCF___HMMfirst_Plot1.pdf)
 and
 ![Plot2](https://gitlab.com/anders.sejr.hansen/anisotropy/blob/master/QC_Plots/U2OS_C32_Halo-hCTCF___HMMfirst_Plot2.pdf)
-
-
+Here we will briefly describe each of the sub-plots (please see the
+source code for full details). The following plots are shown in ![Plot1](https://gitlab.com/anders.sejr.hansen/anisotropy/blob/master/QC_Plots/U2OS_C32_Halo-hCTCF___HMMfirst_Plot1.pdf):
+* Subplots 1-3: show the anisotropy as angle histograms for the 3
+experimental frame rates (~223 Hz, ~133 Hz, ~74 Hz). Key metrics are
+also displayed. 
+* Subplots 4-6: show the anisotropy as normalized angle histograms in
+  a slightly different manner for the 3 experimental frame rates (~223
+  Hz, ~133 Hz, ~74 Hz). Additional metrices are displayed.
+* Subplot 7-9: show how the metrics `Amp`, `f(180/0)` and `FWHM` (see
+  definitions above) scale with time (i.e. the frame rate). Errorbars
+  show the standard deviation among 50 subsamplings using 50% of the
+  data. To generate these plots, we averaged SPT data over all
+  displacement lengths (that satisfied the two criteria above: *FREE*
+  and `MinMinJumpThres`.
+* Subplot 10-12: show how the metrics `Amp`, `f(180/0)` and `FWHM` (see
+  definitions above) scale with mean displacement length. Note that
+  since 2 displacements make up an angle, here we plot the anisotropy
+  as a function of the mean of the two displacements. Errorbars
+  show the standard deviation among 50 subsamplings using 50% of the
+  data. To generate these plots, we averaged SPT data over all
+  frame rates (that satisfied the two criteria above: *FREE*
+  and `MinMinJumpThres`.
+* Subplot 13-15: show how the metrics `Amp`, `f(180/0)` and `FWHM` (see
+  definitions above) scale with mean displacement length for a given
+  frame rate. Note that in case where there were fewer than
+  `minAngleNumber` angles in a bin, we did not perform the calculation
+  and the bin appears as white. As discussed elsewhere, we also found
+  that very long displacements were associated with more frequent
+  tracking errors. We therefore set a max displacement for each frame
+  rate as detailed in the varibable `Analysis_struct.MaxJump`, which
+  additionally restricts when metrics were calculated. Each heatmap
+  has an associated colormap with indicated scales. 
+Next, in  ![Plot2](https://gitlab.com/anders.sejr.hansen/anisotropy/blob/master/QC_Plots/U2OS_C32_Halo-hCTCF___HMMfirst_Plot2.pdf)
+  the following plots are shown:
+* Subplot 1-3:  
 
 #### Issues
 This code was tested with Matlab 2014b on a Mac and comes with vbSPT

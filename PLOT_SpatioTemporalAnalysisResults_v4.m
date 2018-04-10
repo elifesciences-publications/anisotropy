@@ -168,7 +168,7 @@ for SampleIter = 1:length(FinalResults)
     title([FinalResults(1,SampleIter).SampleName, ' FWHM vs. time'], 'FontSize', 8, 'FontName', 'Helvetica', 'Interpreter', 'none');
     ylabel('FWHM (degrees)', 'FontSize',9, 'FontName', 'Helvetica');
     xlabel('lag time (ms)', 'FontSize',9, 'FontName', 'Helvetica');
-    axis([0 1.02*max(time_vector) 0 91]);
+    axis([0 1.02*max(time_vector) 0 151]);
     hold off;
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -288,7 +288,7 @@ for SampleIter = 1:length(FinalResults)
    title([FinalResults(1,SampleIter).SampleName, ' FWHM vs. length'], 'FontSize', 8, 'FontName', 'Helvetica', 'Interpreter', 'none');
     ylabel('FWHM (degrees)', 'FontSize',9, 'FontName', 'Helvetica');
     xlabel('mean displacement (nm)', 'FontSize',9, 'FontName', 'Helvetica');
-    axis([0 1000*(diff_to_add+1.03*max(input_struct.MovingThreshold(1,end))) 0 91]);
+    axis([0 1000*(diff_to_add+1.03*max(input_struct.MovingThreshold(1,end))) 0 151]);
     hold off;
     
 
@@ -333,7 +333,7 @@ for SampleIter = 1:length(FinalResults)
     set(gca,'ytick',frame_rate_vector,'yticklabel',legend_info);
     xlabel('mean displacement (nm)', 'FontSize',9, 'FontName', 'Helvetica');
     title([FinalResults(1,SampleIter).SampleName, ' FWHM matrix'], 'FontSize', 8, 'FontName', 'Helvetica', 'Interpreter', 'none');
-    caxis([0 91]);
+    caxis([0 151]);
     colormap(c_map);
     colorbar;
     
@@ -484,7 +484,7 @@ for SampleIter = 1:length(FinalResults)
     title([FinalResults(1,SampleIter).SampleName, ' FWHM vs. length'], 'FontSize', 8, 'FontName', 'Helvetica', 'Interpreter', 'none');
     ylabel('FWHM (degrees)', 'FontSize',9, 'FontName', 'Helvetica');
     xlabel('MIN displacement (nm)', 'FontSize',9, 'FontName', 'Helvetica');
-    axis([0 1000*(diff_to_add+1.03*max(input_struct.MovingThreshold(1,end))) 0 91]);
+    axis([0 1000*(diff_to_add+1.03*max(input_struct.MovingThreshold(1,end))) 0 151]);
     hold off;
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -526,7 +526,7 @@ for SampleIter = 1:length(FinalResults)
     set(gca,'ytick',frame_rate_vector,'yticklabel',legend_info);
     xlabel('MIN displacement (nm)', 'FontSize',9, 'FontName', 'Helvetica');
     title([FinalResults(1,SampleIter).SampleName, ' FWHM matrix'], 'FontSize', 8, 'FontName', 'Helvetica', 'Interpreter', 'none');
-    caxis([0 91]);
+    caxis([0 151]);
     colormap(c_map);
     colorbar;
     
@@ -570,7 +570,7 @@ for SampleIter = 1:length(FinalResults)
     xlabel('2nd displacement (nm)', 'FontSize',9, 'FontName', 'Helvetica');
     ylabel('1st displacement (nm)', 'FontSize',9, 'FontName', 'Helvetica');
     title(['1st/2nd jump FWHM matrix'], 'FontSize', 8, 'FontName', 'Helvetica', 'Interpreter', 'none');
-    caxis([0 91]);
+    caxis([0 151]);
     colormap(c_map);
     %colorbar;
     
