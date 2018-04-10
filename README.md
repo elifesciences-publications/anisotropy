@@ -227,7 +227,7 @@ also displayed.
   show the standard deviation among 50 subsamplings using 50% of the
   data. To generate these plots, we averaged SPT data over all
   frame rates (that satisfied the two criteria above: *FREE*
-  and `MinMinJumpThres`.
+  and `MinMinJumpThres`).
 * Subplot 13-15: show how the metrics `Amp`, `f(180/0)` and `FWHM` (see
   definitions above) scale with mean displacement length for a given
   frame rate. Note that in case where there were fewer than
@@ -255,7 +255,7 @@ Next, in  ![Plot2](https://gitlab.com/anders.sejr.hansen/anisotropy/blob/master/
   rows show the length of the 1st displacement and the columns show
   the length of the 2nd displacement. To generate these plots we averaged SPT data over all
   frame rates (that satisfied the two criteria above: *FREE*
-  and `GlotbalMinJumpThres`.
+  and `GlotbalMinJumpThres`).
 
 #### Issues
 This code was tested with Matlab 2014b on a Mac and comes with vbSPT
