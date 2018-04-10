@@ -238,9 +238,24 @@ also displayed.
   rate as detailed in the varibable `Analysis_struct.MaxJump`, which
   additionally restricts when metrics were calculated. Each heatmap
   has an associated colormap with indicated scales. 
+
 Next, in  ![Plot2](https://gitlab.com/anders.sejr.hansen/anisotropy/blob/master/QC_Plots/U2OS_C32_Halo-hCTCF___HMMfirst_Plot2.pdf)
   the following plots are shown:
-* Subplot 1-3:  
+* Subplot 1-3: shows how the metrics `Amp`, `f(180/0)` and `FWHM` (see
+  definitions above) scale with MIN displacement length. Thus, it's
+  identical to subplots 10-12 above except the *min* of the 2
+  displacements making up the angle is used instead of the *mean*.
+* Subplot 4-6: show how the metrics `Amp`, `f(180/0)` and `FWHM` (see
+  definitions above) scale with MIN displacement length for a given
+  frame rate. Thus, it's
+  identical to subplots 13-15 above except the *min* of the 2
+  displacements making up the angle is used instead of the *mean*.
+* Subplot 7-9: shows how the metrics `Amp`, `f(180/0)` and `FWHM` (see
+  definitions above) scale length of each displacement seperately. The
+  rows show the length of the 1st displacement and the columns show
+  the length of the 2nd displacement. To generate these plots we averaged SPT data over all
+  frame rates (that satisfied the two criteria above: *FREE*
+  and `GlotbalMinJumpThres`.
 
 #### Issues
 This code was tested with Matlab 2014b on a Mac and comes with vbSPT
