@@ -198,11 +198,15 @@ We noticed that at very long displacements, we would occasionally see very stran
 Finally, all of the anisotropy metrics are saved to the structured array `FinalResults` and saved. With the example data provided on GitLab, the workspace saved is `U2OS_C32_SpatioTemporalAnalysis.mat`.
 
 #### Step 6 - Plot the results
-
-
+Finally, we used `PLOT_SpatioTemporalAnalysisResults_v4.m` to plot and
+visualize the results for each individual data set and similar code to
+overlay results from multiple different samples. The code will
+generate 27 sub-plots per cell line / condition and these are save as
+2 PDF files in the directory `QC_Plots`. Please see these two plots:
 ![Plot1](https://gitlab.com/anders.sejr.hansen/anisotropy/blob/master/QC_Plots/U2OS_C32_Halo-hCTCF___HMMfirst_Plot1.pdf)
-
+and
 ![Plot2](https://gitlab.com/anders.sejr.hansen/anisotropy/blob/master/QC_Plots/U2OS_C32_Halo-hCTCF___HMMfirst_Plot2.pdf)
+
 
 
 #### Issues
