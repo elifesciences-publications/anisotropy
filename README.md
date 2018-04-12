@@ -276,6 +276,26 @@ vbSPT v.1.1.4 instead.
    ![plot](https://gitlab.com/anders.sejr.hansen/anisotropy/blob/master/QC_Plots/U2OS_C32_Halo-hCTCF_MSD-Plot.pdf)
    to the directory `QC_Plots`.
    
+## MSD-analysis on these datasets
+
+Here we will briefly describe the code used for MSD analysis and the
+rationale behind the approach. The mean-squared displacement (MSD) is
+a classic analysis approach for SPT. Briefly, it involves increasing
+the displacements at increasing time-lags and then plotting the mean
+of the squared distance with time. If the particle exhibits normal
+Brownian motion, the MSD should be linear with time according to:
+```math
+MSD(t)=4Dt^\alpha
+```
+
+
+Accordingly, α=1 for Brownian motion. α<1 indicates subdiffusion (anomalous diffusion). Here, since our trajectories are generally too short to analyze individually8, and we therefore compute the time- and ensemble-averaged MSD. The MSD at a timelag τ is given by:
+〖MSD〗_i (t)=(r_i (t+τ)-r_i (τ))
+Thus, if we average over all displacements with time-lag τ and over all trajectories, i, we obtain the time- and ensemble-averaged MSD for a given timelag τ. In the case of nuclear proteins that bind chromatin and which are tracked with a significant localization error (around 35 nm in our data), the calculations are substantially more complicated. For example, the bound molecules exhibit much longer trajectories than the freely diffusing population, since the free population rapidly moves out-of-focus9. Thus, at longer time-lags, unless corrected for, the bound population would dominate the MSD calculations. Moreover, MSDs should not be calculated and averaged over a mixture of two distinct populations. Thus, to filter out the bound molecules, we use the HMM-classification described above. We use the function “MSD_HMM_analyzer.m” to calculate the MSD using only the segments that are classified as free using the HMM. Since we have data at three different frame rates, we calculate the MSD for each frame rate individually (~223 Hz, 134 Hz, 74 Hz) and we also merge the data from all three frame rates. 
+When it comes to model-fitting, we fit to the HMM-classified MSD. But we must also account for localization errors and we therefore consider the expression:
+〖MSD〗_"HMM"  (t)=4Dt^α+4σ^2
+where σ is the localization error (standard deviation in one dimension; approximate 35 nm as determined using Spot-On9). In terms of model-fitting the time- and ensemble-averaged MSD, there are a number of considerations. First, how long time-lags to consider for calculating the MSD. Second, what fraction of the data to use for the fitting. To answer the first question, we used subsampling of the data: for each time-lag, we subsampled 50% of the data using 25 iterations and calculated the standard deviation (as shown by the error bars). We then limited the number of timepoints to use (using the vector “Conditions.MSD_timepoints”) to 20, 18 and 16 for 223 Hz, 134 Hz and 74 Hz, respectively, such that we did not consider MSD values where the error bars got very large. In terms of least-squares fitting of the data, Saxton has argued that one should limit the fitting to only a fraction of the MSD curve10,11. Thus, here we only use the first 50% of the data in the fitting and we perform least-squares fitting as shown in “ProcessPlotFit_MSD.m”. 
+We note that fitting the MSD was not very robust in this case. We see substantially variation in the inferred parameters between the 3 frame rates and it has been argued elsewhere that MSD-analysis is not an optimal method for analyzing SPT data12. We also note that MSD analysis is much less robust for inferring diffusion coefficients9. Nevertheless, since it is a standard method for determined the anomalous exponent, α, we include it here. We took the final inferred α as the one fitted when averaged over data from all three frame rates and we also calculated the 95% confidence interval. 
 
 
 ## License
