@@ -307,7 +307,7 @@ When it comes to model-fitting, we fit to the HMM-classified MSD. But
 we must also account for localization errors and we therefore consider
 the expression:
 ```math
-MSD(t)_"HMM" (\tau)=4D\tau^\alpha+4\sigma^2
+MSD(t)_{HMM} (\tau)=4D\tau^\alpha+4\sigma^2
 ```
 where $`\sigma`$ is the localization error (standard deviation in one
 dimension; approximate 35 nm as determined using Spot-On (Hansen,
