@@ -4,7 +4,9 @@ Anisotropy
 # Overview of code for data processing and spatiotemporal anisotropy calculations
 This repository contains Matlab code for processing SPT trajectory data
 and for calculating anisotropy at multiple spatiotemporal
-scales.
+scales. It also contains code for calculating and fitting the MSD for
+SPT trajectory data that has been HMM classified. We will describe the
+general anisotropy code first and the HMM-MSD code at the end.
 
 ## Quick tutorial: going through each step
 
@@ -263,8 +265,21 @@ v1.1.2. Newer versions of Matlab (2015 and newer) may need to use
 vbSPT v.1.1.4 instead.
 
 
+# MSD-analysis and fitting of HMM-classified SPT data
+
+## Quick tutorial: going through each step
+
+1. Follow steps 1-3 above to generate HMM-classified SPT data
+2. Open up `ProcessPlotFit_MSD.m` and click run.
+3. This will call the dependent function `MSD_HMM_analyzer.m` and save
+   this
+   ![Plot2](https://gitlab.com/anders.sejr.hansen/anisotropy/blob/master/QC_Plots/U2OS_C32_Halo-hCTCF_MSD-Plot.pdf)
+   to the directory `QC_Plots`.
+   
+
+
 ## License
-This program is released under the GNU General Public License version 3 or upper (GPLv3+).
+These programs are released under the GNU General Public License version 3 or upper (GPLv3+).
 
 
     This program is free software: you can redistribute it and/or modify
