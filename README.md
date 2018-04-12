@@ -273,7 +273,7 @@ vbSPT v.1.1.4 instead.
 2. Open up `ProcessPlotFit_MSD.m` and click run.
 3. This will call the dependent function `MSD_HMM_analyzer.m` and save
    this
-   ![Plot2](https://gitlab.com/anders.sejr.hansen/anisotropy/blob/master/QC_Plots/U2OS_C32_Halo-hCTCF_MSD-Plot.pdf)
+   ![plot](https://gitlab.com/anders.sejr.hansen/anisotropy/blob/master/QC_Plots/U2OS_C32_Halo-hCTCF_MSD-Plot.pdf)
    to the directory `QC_Plots`.
    
 
