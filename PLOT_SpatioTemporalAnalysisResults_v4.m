@@ -25,42 +25,10 @@ plot_path = './2018_April_Plots/';
 
 % Load the appropriate dataset
 if DataSet == 1
-    load('full_dataset_20171028_AllExp_50nmSteps_v2.mat');
-    SaveAppend = '_v2';
-elseif DataSet == 2
-    load('full_dataset_20171028_MatchedSims_50nmSteps_v2.mat');
-    SaveAppend = '_v2';
-elseif DataSet == 3
-    load('full_dataset_20171028_AllExp_150nmGlobalMin_v2.mat');
-    SaveAppend = '_min150_v2';
-elseif DataSet == 4
-    load('full_dataset_20171028_MatchedSims_150nmGlobalMin_v2.mat');
-    SaveAppend = '_min150_v2';
-elseif DataSet == 5
-    load('full_dataset_20171031_AllExp_HMMfirst.mat');
+    load('U2OS_C32_SpatioTemporalAnalysis.mat');
     SaveAppend = '_HMMfirst';
-elseif DataSet == 6
-    load('full_dataset_20171031_MatchedSims_HMMfirst.mat');
-    SaveAppend = '_HMMfirst';
-elseif DataSet == 7
-    load('full_dataset_20180216_AssafSims_HMMfirst.mat');
-    SaveAppend = '_HMMfirst';
-elseif DataSet == 8
-    load('full_dataset_20180220_AssafSims_HMMfirst.mat');
-    SaveAppend = '_HMMfirst';
-elseif DataSet == 9
-    load('full_dataset_20180220_RNA_mutant_HMMfirst.mat');
-    SaveAppend = '_HMMfirst';
-elseif DataSet == 10
-    load('full_dataset_20180304_RNA_mutant_HMMfirst');
-    SaveAppend = '_HMMfirst';
-elseif DataSet == 11
-    load('20180409_FinalResults_HMMfirst');
-    SaveAppend = 'HMMfirst';
-elseif DataSet == 12
-    load('20180529_D2_RBR_FinalResults_HMMfirst');
-    SaveAppend = 'HMMfirst';
 end
+
 
 % Loop over all the samples:
 for SampleIter = 1:length(FinalResults)
