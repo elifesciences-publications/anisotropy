@@ -8,6 +8,8 @@ scales. It also contains code for calculating and fitting the MSD for
 SPT trajectory data that has been HMM classified. We will describe the
 general anisotropy code first and the HMM-MSD code at the end.
 
+### This code is associated with the paper from McSwiggen et al., "Evidence for DNA-mediated nuclear compartmentalization distinct from phase separation". eLife, 2019. http://dx.doi.org/10.7554/eLife.47098
+
 ## Quick tutorial: going through each step
 
 1. **Step 1**: Obtain SPT data at multiple temporal scales
